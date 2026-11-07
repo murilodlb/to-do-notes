@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
 from .models import Todo
+from .forms import TodoForm
 
 
 class TodoListView(LoginRequiredMixin, ListView):
@@ -15,7 +16,7 @@ class TodoListView(LoginRequiredMixin, ListView):
 
 class TodoCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Todo
-    fields = ["title", "deadline"]
+    form_class = TodoForm
     success_url = reverse_lazy("todo_list")
     success_message = "Tarefa criada com sucesso!"
 
@@ -26,7 +27,7 @@ class TodoCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 class TodoUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Todo
-    fields = ["title", "deadline"]
+    form_class = TodoForm
     success_url = reverse_lazy("todo_list")
     success_message = "Tarefa atualizada com sucesso!"
 

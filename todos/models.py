@@ -12,12 +12,12 @@ class TodoQuerySet(models.QuerySet):
 class Todo(models.Model):
     title = models.CharField(verbose_name="Título", max_length=100, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False, blank=False)
-    deadline = models.DateField(verbose_name="Prazo", null=False, blank=False)
+    deadline = models.DateField(verbose_name="Prazo", null=True, blank=True)
     finished_at = models.DateField(null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ["deadline"]
+        ordering = [models.F("deadline").asc(nulls_last=True), "-created_at"]
 
     def mark_as_finished(self) -> None:
         if not self.finished_at:

@@ -1,0 +1,65 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Run Checks & Unit Tests
+    runs-on: ubuntu-latest
+    env:
+      SECRET_KEY: "ci-secret-key-for-testing"
+      DEBUG: "True"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+          enable-cache: true
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: uv sync --locked
+
+      - name: Django System Check
+        run: uv run python manage.py check
+
+      - name: Check for Missing Migrations
+        run: uv run python manage.py makemigrations --check --dry-run
+
+      - name: Run Unit Tests
+        run: uv run python manage.py test
+
+  deploy:
+    name: Deploy to Render
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render Deploy Hook
+        env:
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$RENDER_DEPLOY_HOOK_URL" ]; then
+            echo "::notice ::RENDER_DEPLOY_HOOK_URL secret is not set. Skipping deploy hook trigger."
+            echo "To enable automated deployment on push to main, add RENDER_DEPLOY_HOOK_URL in repository Settings -> Secrets and variables -> Actions."
+          else
+            echo "Triggering deployment on Render..."
+            curl -fsS -X POST "$RENDER_DEPLOY_HOOK_URL"
+            echo "Render deployment triggered successfully!"
+          fi
