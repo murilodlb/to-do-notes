@@ -22,9 +22,9 @@
                     <tr>
                         <th scope="row">{{ todo.pk }}</th>
                         <td>{{ todo.title }}</td>
-                        <td>{{ todo.created_at }}</td>
-                        <td>{{ todo.deadline }}</td>
-                        <td>{{ todo.finished_at | default:"-" }}</td>
+                        <td>{{ todo.created_at|date:"d/m/Y" }}</td>
+                        <td>{{ todo.deadline|date:"d/m/Y"|default:"-" }}</td>
+                        <td>{{ todo.finished_at|date:"d/m/Y"|default:"-" }}</td>
                         <td>
                             <a
                                 href="{% url 'todo_complete' todo.pk %}"

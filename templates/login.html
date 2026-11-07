@@ -10,7 +10,7 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="id_username" class="form-label">Nome de usuário</label>
-                    <input type="text" name="username" class="form-control" id="id_username" required>
+                    <input type="text" name="username" value="{{ form.username.value|default:'' }}" class="form-control" id="id_username" required>
                 </div>
                 <div class="mb-3">
                     <label for="id_password" class="form-label">Senha</label>

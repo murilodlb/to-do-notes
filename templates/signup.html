@@ -10,19 +10,19 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="id_username" class="form-label">Nome de usuário</label>
-                    <input type="text" name="username" class="form-control" id="id_username" required>
+                    <input type="text" name="username" value="{{ form.username.value|default:'' }}" class="form-control {% if form.username.errors %}is-invalid{% endif %}" id="id_username" required>
                 </div>
-                <div>
+                <div class="mb-3">
                     <label for="id_email" class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="id_email" required>
+                    <input type="email" name="email" value="{{ form.email.value|default:'' }}" class="form-control {% if form.email.errors %}is-invalid{% endif %}" id="id_email" required>
                 </div>
                 <div class="mb-3">
                     <label for="id_password1" class="form-label">Senha</label>
-                    <input type="password" name="password1" class="form-control" id="id_password1" required>
+                    <input type="password" name="password1" class="form-control {% if form.password1.errors %}is-invalid{% endif %}" id="id_password1" required autocomplete="new-password">
                 </div>
                 <div class="mb-3">
                     <label for="id_password2" class="form-label">Confirme a Senha</label>
-                    <input type="password" name="password2" class="form-control" id="id_password2" required>
+                    <input type="password" name="password2" class="form-control {% if form.password2.errors %}is-invalid{% endif %}" id="id_password2" required autocomplete="new-password">
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
             </form>
