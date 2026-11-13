@@ -30,6 +30,7 @@ prompt.txt
 
 # Distribution / packaging
 .Python
+prompt*
 build/
 develop-eggs/
 dist/

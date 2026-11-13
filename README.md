@@ -1,4 +1,5 @@
-# 📝 To Do Notes
+# To Do Notes
+Faça listas de tarefas e notas em texto de forma prática, acesse-as de onde você estiver.
 
 > Sistema simples, moderno e eficiente para organizar sua rotina diária com listas de tarefas e notas em texto — acesse de onde você estiver.
 
@@ -8,7 +9,9 @@
 
 ---
 
-## 💡 Sobre o Projeto
+[Link para acessar o site](https://to-do-notes.onrender.com/)
+=======
+## Sobre o Projeto
 
 O **To Do Notes** nasceu como um projeto pessoal para centralizar anotações rápidas e gerenciamento de tarefas do dia a dia. Recentemente modernizado, conta com:
 - **Tema Claro e Escuro (Dark Mode)** nativo via Bootstrap 5.3 com persistência automática no navegador.
@@ -20,14 +23,14 @@ O **To Do Notes** nasceu como um projeto pessoal para centralizar anotações r�
 
 ## ✨ Principais Funcionalidades
 
-- 🌓 **Alternador de Tema (Light / Dark / Auto)**: Permite escolher entre tema claro, escuro ou acompanhar automaticamente a preferência do seu sistema operacional, sem cintilação ao recarregar a página.
-- 📋 **Gerenciador de Tarefas**: Crie tarefas com prazos definidos por um calendário interativo ou deixe o prazo em aberto (opcional). Conclua, edite ou exclua tarefas com facilidade.
-- 📄 **Bloco de Notas**: Escreva ideias, listas de estudos e textos longos com formatação limpa de parágrafos e contagem de caracteres.
-- 🔒 **Contas Individuais Seguras**: Cada usuário possui seu próprio espaço isolado de tarefas e notas, com fluxo de cadastro, login e recuperação de senha por email.
+- **Alternador de Tema (Light / Dark / Auto)**: Permite escolher entre tema claro, escuro ou acompanhar automaticamente a preferência do seu sistema operacional, sem cintilação ao recarregar a página.
+- **Gerenciador de Tarefas**: Crie tarefas com prazos definidos por um calendário interativo ou deixe o prazo em aberto (opcional). Conclua, edite ou exclua tarefas com facilidade.
+- **Bloco de Notas**: Escreva ideias, listas de estudos e textos longos com formatação limpa de parágrafos e contagem de caracteres.
+- **Contas Individuais Seguras**: Cada usuário possui seu próprio espaço isolado de tarefas e notas, com fluxo de cadastro, login e recuperação de senha por email.
 
 ---
 
-## 🧭 Fluxo de Uso e Guias Passo a Passo (How-Tos)
+## Fluxo de Uso e Guias Passo a Passo (How-Tos)
 
 ### 1. Como Criar uma Conta (Cadastro)
 1. Na barra de navegação superior, clique no botão **Entrar** ou acesse a página inicial e selecione qualquer funcionalidade.
@@ -73,31 +76,31 @@ O **To Do Notes** nasceu como um projeto pessoal para centralizar anotações r�
 
 ### 4. Como Alternar o Tema Visual
 - No canto direito da barra de navegação, clique no ícone circular de tema:
-  - ☀️ **Claro**: Fundo claro e alto contraste para ambientes iluminados.
-  - 🌙 **Escuro**: Tons escuros confortáveis para leitura noturna e economia de bateria.
-  - 🌓 **Automático**: Sincroniza a interface em tempo real com as preferências do seu dispositivo.
+  - **Claro**: Fundo claro e alto contraste para ambientes iluminados.
+  - **Escuro**: Tons escuros confortáveis para leitura noturna e economia de bateria.
+  - **Automático**: Sincroniza a interface em tempo real com as preferências do seu dispositivo.
 - Sua escolha fica salva no navegador (`localStorage`) para que você não precise escolher novamente a cada página acessada.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 | Camada | Ferramenta / Biblioteca | Descrição |
 | :--- | :--- | :--- |
 | **Linguagem** | Python 3.12+ | Linguagem principal do ecossistema backend |
-| **Framework Web** | Django 5.2 | Arquitetura robusta MVC com ORM, autenticação e views genéricas |
-| **Frontend & Estilo** | Bootstrap 5.3 + Bootstrap Icons | Interface responsiva com suporte nativo a `data-bs-theme` |
+| **Framework Web** | [Django](https://www.djangoproject.com/) 5.2 | Arquitetura robusta MVC com ORM, autenticação e views genéricas |
+| **Frontend & Estilo** | [Bootstrap](https://getbootstrap.com/) 5.3 + Bootstrap Icons | Interface responsiva com suporte nativo a `data-bs-theme` |
 | **Formulários** | Django Crispy Forms & Crispy Bootstrap 5 | Renderização semântica e acessível de formulários |
 | **Gerenciador de Pacotes** | Astral `uv` | Gerenciamento ultrarrápido com `pyproject.toml` e `uv.lock` |
-| **Banco de Dados** | SQLite (Dev) / PostgreSQL (Prod) | Configurado via `dj-database-url` e Supabase |
+| **Banco de Dados** | SQLite (Dev) / PostgreSQL (Prod) | Configurado via [Neon](https://neon.com) |
 | **Arquivos Estáticos** | WhiteNoise | Compressão e distribuição eficiente de arquivos estáticos em produção |
 | **Servidor WSGI** | Gunicorn | Servidor HTTP de produção para aplicações Python |
 | **CI / CD** | GitHub Actions | Pipeline automatizada de testes, validação de migrações e deploy |
-| **Hospedagem** | Render | Plataforma de cloud hosting com integração contínua |
+| **Hospedagem** | [Render](https://render.com) | Plataforma de cloud hosting com integração contínua |
 
 ---
 
-## 🚀 Como Executar o Projeto Localmente
+## Como Executar o Projeto Localmente
 
 ### Pré-requisitos
 - **Python 3.12+** instalado.
@@ -110,61 +113,63 @@ O **To Do Notes** nasceu como um projeto pessoal para centralizar anotações r�
 ### Passo a Passo
 
 1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/MuriloBarros304/to-do-notes.git
-   cd to-do-notes
-   ```
+  
+  ```bash
+  git clone https://github.com/MuriloBarros304/to-do-notes.git
+  cd to-do-notes
+  ```
 
 2. **Crie o ambiente virtual e sincronize as dependências:**
-   ```bash
-   uv sync
-   ```
+  
+  ```bash
+  uv sync
+  ```
 
 3. **Configure as variáveis de ambiente:**
-   Crie um arquivo `.env` na raiz do projeto com as chaves necessárias:
-   ```env
-   SECRET_KEY="sua-chave-secreta-de-desenvolvimento"
-   DEBUG=True
-   ALLOWED_HOSTS="127.0.0.1,localhost"
-   DATABASE_URL="sqlite:///db.sqlite3"
-   ```
+  Crie um arquivo `.env` na raiz do projeto com as chaves necessárias:
+  
+  ```env
+  SECRET_KEY="sua-chave-secreta-de-desenvolvimento"
+  DEBUG=True
+  ALLOWED_HOSTS="127.0.0.1,localhost"
+  DATABASE_URL="sqlite:///db.sqlite3"
+  ```
 
 4. **Execute as migrações do banco de dados:**
-   ```bash
-   uv run python manage.py migrate
-   ```
+  
+  ```bash
+  uv run python manage.py migrate
+  ```
 
 5. **Inicie o servidor de desenvolvimento:**
-   ```bash
-   uv run python manage.py runserver
-   ```
-   Acesse a aplicação no navegador em [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+
+  ```bash
+  uv run python manage.py runserver
+  ```
+
+  Acesse a aplicação no navegador em [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
 6. **Execute os testes automatizados:**
-   ```bash
-   uv run python manage.py test
-   ```
+  
+  ```bash
+  uv run python manage.py test
+  ```
 
 ---
 
-## 🚢 Deploy no Render
+## Deploy no Render
 
 O projeto está pronto para deploy no **Render** com `uv`:
 
 - **Build Command**:
+
   ```bash
   ./build.sh
   ```
+
   *(ou `uv sync --locked && uv run python manage.py collectstatic --no-input && uv run python manage.py migrate`)*
 - **Start Command**:
+
   ```bash
   uv run gunicorn setup.wsgi:application
   ```
-
----
-
-## 👨‍💻 Autor
-
-Desenvolvido por **Murilo Barros**  
-- GitHub: [@MuriloBarros304](https://github.com/MuriloBarros304)  
-- Repositório: [https://github.com/MuriloBarros304/to-do-notes](https://github.com/MuriloBarros304/to-do-notes)
