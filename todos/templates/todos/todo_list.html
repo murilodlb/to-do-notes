@@ -29,6 +29,7 @@
                             <a
                                 href="{% url 'todo_complete' todo.pk %}"
                                 class="btn btn-primary btn-sm {% if todo.finished_at %} disabled {% endif %}"
+                                data-single-click="true"
                             >
                                 Concluir
                             </a>

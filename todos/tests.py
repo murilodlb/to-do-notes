@@ -51,3 +51,28 @@ class TodoModelAndFormTests(TestCase):
         self.assertTrue(form.is_valid())
         todo = form.save(commit=False)
         self.assertIsNone(todo.deadline)
+
+    def test_rapid_identical_post_creates_only_one_todo(self):
+        from django.core.cache import cache
+        from django.urls import reverse
+
+        cache.clear()
+        self.client.force_login(self.user)
+        payload = {"title": "Tarefa única", "deadline": ""}
+        url = reverse("todo_create")
+
+        resp1 = self.client.post(url, payload)
+        resp2 = self.client.post(url, payload)
+
+        self.assertEqual(resp1.status_code, 302)
+        self.assertEqual(resp2.status_code, 302)
+        self.assertEqual(Todo.objects.filter(user=self.user, title="Tarefa única").count(), 1)
+
+    def test_todo_list_complete_button_has_single_click_guard(self):
+        from django.urls import reverse
+
+        Todo.objects.create(title="Testar botão", user=self.user)
+        self.client.force_login(self.user)
+        response = self.client.get(reverse("todo_list"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-single-click="true"')

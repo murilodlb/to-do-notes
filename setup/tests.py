@@ -52,3 +52,9 @@ class SignUpViewTests(TestCase):
         # Fields username and email should be preserved in response HTML
         self.assertContains(response, 'value="testuser1"')
         self.assertContains(response, 'value="test@example.com"')
+
+    def test_base_template_includes_double_submit_guard_script(self):
+        response = self.client.get(self.signup_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "data-submitting")
+        self.assertContains(response, "spinner-border")

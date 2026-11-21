@@ -205,5 +205,75 @@
                 }
             })();
         </script>
+
+        <!-- Proteção global contra múltiplos envios (double-submit) -->
+        <script>
+            (() => {
+                'use strict';
+
+                document.addEventListener('submit', event => {
+                    const form = event.target;
+                    if (!(form instanceof HTMLFormElement)) return;
+
+                    if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
+                        return;
+                    }
+
+                    if (form.getAttribute('data-submitting') === 'true') {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        return;
+                    }
+
+                    form.setAttribute('data-submitting', 'true');
+
+                    form.querySelectorAll('button[type="submit"], input[type="submit"]').forEach(btn => {
+                        btn.disabled = true;
+                        btn.setAttribute('aria-busy', 'true');
+
+                        if (btn.tagName === 'BUTTON' && !btn.querySelector('.spinner-border')) {
+                            const spinner = document.createElement('span');
+                            spinner.className = 'spinner-border spinner-border-sm me-1';
+                            spinner.setAttribute('role', 'status');
+                            spinner.setAttribute('aria-hidden', 'true');
+                            spinner.setAttribute('data-submit-spinner', 'true');
+                            btn.prepend(spinner);
+                        }
+                    });
+                });
+
+                document.addEventListener('click', event => {
+                    const link = event.target.closest('a[data-single-click="true"]');
+                    if (!link) return;
+
+                    if (link.getAttribute('data-submitting') === 'true' || link.classList.contains('disabled')) {
+                        event.preventDefault();
+                        return;
+                    }
+
+                    link.setAttribute('data-submitting', 'true');
+                    link.classList.add('disabled');
+                    link.setAttribute('aria-disabled', 'true');
+                });
+
+                window.addEventListener('pageshow', event => {
+                    if (!event.persisted) return;
+
+                    document.querySelectorAll('[data-submitting="true"]').forEach(el => {
+                        el.removeAttribute('data-submitting');
+                        if (el instanceof HTMLFormElement) {
+                            el.querySelectorAll('button[type="submit"], input[type="submit"]').forEach(btn => {
+                                btn.disabled = false;
+                                btn.removeAttribute('aria-busy');
+                                btn.querySelectorAll('[data-submit-spinner="true"]').forEach(s => s.remove());
+                            });
+                        } else {
+                            el.classList.remove('disabled');
+                            el.removeAttribute('aria-disabled');
+                        }
+                    });
+                });
+            })();
+        </script>
     </body>
 </html>
