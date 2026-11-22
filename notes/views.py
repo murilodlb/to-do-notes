@@ -1,9 +1,16 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
 
 from notes.models import Note
+
 
 class NoteListView(LoginRequiredMixin, ListView):
     model = Note

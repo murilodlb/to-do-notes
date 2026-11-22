@@ -5,7 +5,7 @@ Faça listas de tarefas e notas em texto de forma prática, acesse-as de onde vo
 
 ![Tela inicial da página](img/home.png)
 
-🌐 **Aplicação em Produção:** [https://to-do-notes.onrender.com/](https://to-do-notes.onrender.com/)
+**Aplicação em Produção:** [https://to-do-notes.onrender.com/](https://to-do-notes.onrender.com/)
 
 ---
 
@@ -21,7 +21,7 @@ O **To Do Notes** nasceu como um projeto pessoal para centralizar anotações r�
 
 ---
 
-## ✨ Principais Funcionalidades
+## Principais Funcionalidades
 
 - **Alternador de Tema (Light / Dark / Auto)**: Permite escolher entre tema claro, escuro ou acompanhar automaticamente a preferência do seu sistema operacional, sem cintilação ao recarregar a página.
 - **Gerenciador de Tarefas**: Crie tarefas com prazos definidos por um calendário interativo ou deixe o prazo em aberto (opcional). Conclua, edite ou exclua tarefas com facilidade.

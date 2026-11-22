@@ -10,11 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
 import os
-from django.contrib.messages import constants as messages
-from decouple import config, Csv
+from pathlib import Path
+
+from decouple import Csv, config
 from dj_database_url import parse as db_url
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

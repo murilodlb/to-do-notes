@@ -1,11 +1,11 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
-from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView, View
 
-from .models import Todo
 from .forms import TodoForm
+from .models import Todo
 
 
 class TodoListView(LoginRequiredMixin, ListView):

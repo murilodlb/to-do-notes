@@ -1,8 +1,9 @@
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
-from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+
 from .forms import SignUpForm
 
 

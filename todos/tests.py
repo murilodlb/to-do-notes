@@ -1,8 +1,10 @@
 from datetime import date, timedelta
-from django.test import TestCase
+
 from django.contrib.auth.models import User
-from .models import Todo
+from django.test import TestCase
+
 from .forms import TodoForm
+from .models import Todo
 
 
 class TodoModelAndFormTests(TestCase):

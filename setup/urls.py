@@ -1,13 +1,24 @@
 from django.contrib import admin
-from django.urls import path
-from todos.views import TodoListView, \
-    TodoCreateView, TodoUpdateView, TodoDeleteView, \
-    TodoCompleteView
-from notes.views import NoteDetailView, NoteListView, \
-    NoteCreateView, NoteUpdateView, NoteDeleteView
-from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
-from .views import SignUpView, CustomLoginView
+from django.urls import path
+from django.views.generic import TemplateView
+
+from notes.views import (
+    NoteCreateView,
+    NoteDeleteView,
+    NoteDetailView,
+    NoteListView,
+    NoteUpdateView,
+)
+from todos.views import (
+    TodoCompleteView,
+    TodoCreateView,
+    TodoDeleteView,
+    TodoListView,
+    TodoUpdateView,
+)
+
+from .views import CustomLoginView, SignUpView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
